@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 import { HiHome, HiDotsHorizontal } from 'react-icons/hi';
-
+import { signIn, signOut, useSession } from 'next-auth/react'
 export default function Sidebar() {
-  const session = null;
+  const { data: session } = useSession();
+  console.log("session data", session);
   return (
     <div className='flex flex-col p-3 justify-between h-screen'>
       <div className='flex flex-col gap-4 '>
@@ -21,10 +22,12 @@ export default function Sidebar() {
         </Link>
         
           <button
-            className='bg-blue-400 text-white rounded-full  hover:brightness-95 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline font-semibold'
+            className='bg-blue-400 text-white rounded-full  hover:brightness-95 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline font-semibold cursor-pointer'
+            onClick={session ? ()=>signOut() : ()=>signIn()}
           >
-            {session ? "Sign Out" : "Signin"}
+            {session ? "SignOut" : "SignIn"}
           </button>
+          
          
       </div>
       

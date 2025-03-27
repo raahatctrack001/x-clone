@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "./components/sidebar/page";
-import News from "./components/news/page";
+import Sidebar from "../components/sidebar/page";
+import News from "../components/news/page";
+import  SessionWrapper from "../components/SessionWrapper/page"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <SessionWrapper>
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 dark:bg-gray-900`}>
         <div className="flex min-h-screen">
@@ -42,7 +44,7 @@ export default function RootLayout({ children }) {
                 type="text"
                 placeholder="Search News..."
                 className="w-full border rounded-3xl text-sm px-4 py-2 bg-gray-200 dark:bg-black text-gray-700 dark:text-white focus:outline-none"
-              />
+                />
             </div>
 
             {/* News Content (Scrollable) */}
@@ -53,5 +55,6 @@ export default function RootLayout({ children }) {
         </div>
       </body>
     </html>
+    </SessionWrapper>
   );
 }
