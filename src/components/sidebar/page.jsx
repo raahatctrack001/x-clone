@@ -22,7 +22,7 @@ export default function Sidebar() {
         </Link>
         
           <button
-            className='bg-blue-400 text-white rounded-full  hover:brightness-95 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline font-semibold cursor-pointer'
+            className='bg-blue-400 text-white rounded-full  hover:brightness-95 transition-all duration-200 w-48 h-9 shadow-md hidden md:inline font-semibold cursor-pointer'
             onClick={session ? ()=>signOut() : ()=>signIn()}
           >
             {session ? "SignOut" : "SignIn"}
