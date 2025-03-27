@@ -26,11 +26,23 @@ export default function Sidebar() {
             onClick={session ? ()=>signOut() : ()=>signIn()}
           >
             {session ? "SignOut" : "SignIn"}
-          </button>
-          
+          </button>         
          
       </div>
-      
+      {session && (
+        <div className='w-full text-gray-700 text-sm flex items-center cursor-pointer p-3 hover:bg-gray-100 rounded-full transition-all duration-200'>
+          <img
+            src={session.user.image}
+            alt='user-img'
+            className='h-10 w-10 rounded-full xl:mr-2'
+          />
+          <div className='hidden xl:inline'>
+            <h4 className='font-bold'>{session.user.name}</h4>
+            <p className='text-gray-500'>@{session.user.username}</p>
+          </div>
+          <HiDotsHorizontal className='h-5 xl:ml-8 hidden xl:inline' />
+        </div>
+      )}      
     </div>
   );
 }
